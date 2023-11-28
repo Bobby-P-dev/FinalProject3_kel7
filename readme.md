@@ -5,6 +5,8 @@ Link github = https://github.com/Bobby-P-dev/FinalProject3_kel7
 # dokumentasi API
 
 Domain Api = https://final3kel7.adaptable.app
+
+
 Domain Database = postgres://otuexgqo:JLlM-Y3kDSk3d0tY_sO58kWZKYynZAlC@flora.db.elephantsql.com/otuexgqo
 
 ## account admin
@@ -19,6 +21,7 @@ Domain Database = postgres://otuexgqo:JLlM-Y3kDSk3d0tY_sO58kWZKYynZAlC@flora.db.
 ## regist account
 
 Method = POST
+
 Domain = https://final3kel7.adaptable.app/user/register
 
 
@@ -34,6 +37,7 @@ request body
 ## Login
 
 Method = POST
+
 Domain = https://final3kel7.adaptable.app/user/login
 
 request body
@@ -48,6 +52,7 @@ request body
 ## put account
 
 Method = PUT
+
 Domain = https://final3kel7.adaptable.app/user/update-account
 
 request body
@@ -61,6 +66,7 @@ request body
 ## delete account
 
 Method = DELETE
+
 Domain = https://final3kel7.adaptable.app/user/delete-account
 
 request
@@ -73,6 +79,7 @@ bearer token authorizaiton
 ## create category
 
 Method = POST
+
 Domain = https://final3kel7.adaptable.app/category/post
 
 request
@@ -90,6 +97,7 @@ request body
 ## get category
 
 Method = GET
+
 Domain = https://final3kel7.adaptable.app/category/get
 
 request
@@ -100,6 +108,7 @@ bearer token authorization
 ## patch category
 
 Method = PATCH
+
 Domain = https://final3kel7.adaptable.app/category/patch/id
 
 request
@@ -117,6 +126,7 @@ request body
 ## delete category
 
 Method = DELETE
+
 Domain = https://final3kel7.adaptable.app/category/delete/id
 
 request
@@ -131,6 +141,7 @@ id param(int) & bearer token authorization only admin
 ## create task
 
 Method = POST
+
 Domain = https://final3kel7.adaptable.app/tasks/post
 
 request
@@ -150,6 +161,7 @@ request body
 ## get task
 
 Method = GET
+
 Domain = https://final3kel7.adaptable.app/tasks/get
 
 request
@@ -160,6 +172,7 @@ bearer token authorization
 ## put task
 
 Method = PUT
+
 Domain = https://final3kel7.adaptable.app/tasks/put/id
 
 request
@@ -178,6 +191,7 @@ request body
 ## patch task status
 
 Method = PATCH
+
 Domain = https://final3kel7.adaptable.app/tasks/patch-status/id
 
 request
@@ -195,6 +209,7 @@ request body
 ## patch task categoryid
 
 Method = PATCH
+
 Domain = https://final3kel7.adaptable.app/tasks/patch-category/id
 
 request
@@ -212,6 +227,7 @@ request body
 ## delete task
 
 Method = DELETE
+
 Domain = https://final3kel7.adaptable.app/tasks/delete/id
 
 request
