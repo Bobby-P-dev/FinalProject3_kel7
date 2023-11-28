@@ -120,6 +120,7 @@ func PutTask(c *gin.Context) {
 }
 
 func PatchStatusTask(c *gin.Context) {
+	// problem in patch
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	contentType := helpers.GetContentType(c)
@@ -142,7 +143,7 @@ func PatchStatusTask(c *gin.Context) {
 	}
 
 	var updateData struct {
-		Status bool `json:"status" binding:"required,boolean"`
+		Status bool `json:"status"`
 	}
 
 	if contentType == appJSON {
@@ -150,12 +151,6 @@ func PatchStatusTask(c *gin.Context) {
 	} else {
 		theErr := error_utils.NewUnprocessibleEntityError("invalid json body")
 		c.JSON(theErr.Status(), theErr)
-		return
-	}
-
-	if err := models.ValidateTaskStatus(updateData.Status); err != nil {
-		err := error_utils.NewBadRequest("only true and false")
-		c.AbortWithStatusJSON(err.Status(), err)
 		return
 	}
 

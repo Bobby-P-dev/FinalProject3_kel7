@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
 )
 
@@ -18,13 +19,20 @@ type Task struct {
 }
 
 func (task *Task) BeforeCreate(tx *gorm.DB) error {
-	if err := ValidateTaskStatus(task.Status); err != nil {
+
+	if err := validator.New().Struct(task); err != nil {
 		return err
 	}
+
 	return nil
 }
 
 func (task *Task) BeforeUpdate(tx *gorm.DB) error {
+
+	if err := validator.New().Struct(task); err != nil {
+		return err
+	}
+
 	if err := ValidateTaskStatus(task.Status); err != nil {
 		return err
 	}

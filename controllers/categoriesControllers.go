@@ -46,7 +46,9 @@ func GetteCategories(c *gin.Context) {
 
 	var Category []models.Category
 
-	err := db.Preload("Tasks").Find(&Category).Error
+	Categorys := models.Category{}
+
+	err := db.Preload("Tasks").Find(&Category, Categorys).Error
 
 	if err != nil {
 		errr := error_utils.NewNotFoundError("task not found")
@@ -60,7 +62,6 @@ func GetteCategories(c *gin.Context) {
 
 func PatchCategories(c *gin.Context) {
 	db := database.GetDB()
-	userData := c.MustGet("userData").(jwt.MapClaims)
 	contentType := helpers.GetContentType(c)
 	categoryId, err := strconv.Atoi(c.Param("categoryId"))
 
@@ -72,10 +73,7 @@ func PatchCategories(c *gin.Context) {
 
 	Category := models.Category{}
 
-	userID := uint(userData["id"].(float64))
-
 	Category.ID = uint(categoryId)
-	Category.ID = userID
 
 	err = db.First(&Category, categoryId).Error
 
