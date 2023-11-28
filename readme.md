@@ -55,6 +55,11 @@ Method = PUT
 
 Domain = https://final3kel7.adaptable.app/user/update-account
 
+request
+`
+bearer token authorization
+`
+
 request body
 ```
 {
