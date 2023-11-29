@@ -3,7 +3,6 @@ package models
 import (
 	"time"
 
-	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
 )
 
@@ -15,14 +14,6 @@ type Task struct {
 	UserID      uint   `gorm:"not null" json:"user_id"`
 	CategoryID  uint   `gorm:"not null" json:"category_id"`
 	User        UsersRespon
-}
-
-func (task *Task) BeforeUpdate(tx *gorm.DB) (err error) {
-
-	if err := validator.New().Struct(task); err != nil {
-		return err
-	}
-	return nil
 }
 
 type TaskRespon struct {

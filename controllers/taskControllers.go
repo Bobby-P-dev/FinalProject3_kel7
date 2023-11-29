@@ -28,8 +28,7 @@ func CreateTask(c *gin.Context) {
 		c.JSON(theErr.Status(), theErr)
 		return
 	}
-	//mendefaultkan nilai status menjadi false
-	Task.Status = false
+
 	Task.UserID = userID
 
 	err := db.Create(&Task).Error
@@ -79,11 +78,11 @@ func PutTask(c *gin.Context) {
 
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
+
 	contentType := helpers.GetContentType(c)
 	taskId, _ := strconv.Atoi(c.Param("taskId"))
 
 	Task := models.Task{}
-
 	userID := uint(userData["id"].(float64))
 
 	if contentType == appJSON {
@@ -143,7 +142,7 @@ func PatchStatusTask(c *gin.Context) {
 	}
 
 	var updateData struct {
-		Status bool `json:"status"`
+		Status bool `json:"status" binding:"required,boolean"`
 	}
 
 	if contentType == appJSON {

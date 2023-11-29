@@ -15,7 +15,6 @@ type User struct {
 	Email    string `json:"email" gorm:"unique;not null" validate:"required,email"`
 	Password string `json:"password" gorm:"not null" validate:"omitempty,min=6" `
 	Role     string `json:"role" gorm:"not null" validate:"required"`
-	Tasks    []Task `json:"tasks" gorm:"foreignKey:UserID"`
 }
 
 func (u *User) BeforeCreate(tx *gorm.DB) error {
