@@ -13,10 +13,10 @@ import (
 )
 
 func CreateTask(c *gin.Context) {
+
 	db := database.GetDB()
 	contentType := helpers.GetContentType(c)
 	userData := c.MustGet("userData").(jwt.MapClaims)
-	_, _ = db, contentType
 
 	userID := uint(userData["id"].(float64))
 	Task := models.Task{}
@@ -30,10 +30,8 @@ func CreateTask(c *gin.Context) {
 	}
 	//mendefaultkan nilai status menjadi false
 	Task.Status = false
-	//menyesuaikan userid dalam db dengan user id jwt
 	Task.UserID = userID
 
-	//create data
 	err := db.Create(&Task).Error
 
 	if err != nil {
@@ -54,6 +52,7 @@ func CreateTask(c *gin.Context) {
 }
 
 func GetTask(c *gin.Context) {
+
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
 
@@ -77,6 +76,7 @@ func GetTask(c *gin.Context) {
 }
 
 func PutTask(c *gin.Context) {
+
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	contentType := helpers.GetContentType(c)
@@ -120,7 +120,7 @@ func PutTask(c *gin.Context) {
 }
 
 func PatchStatusTask(c *gin.Context) {
-	// problem in patch
+
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	contentType := helpers.GetContentType(c)
@@ -168,6 +168,7 @@ func PatchStatusTask(c *gin.Context) {
 }
 
 func PatchCategoryTask(c *gin.Context) {
+
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	contentType := helpers.GetContentType(c)
@@ -214,6 +215,7 @@ func PatchCategoryTask(c *gin.Context) {
 }
 
 func DeleteteTask(c *gin.Context) {
+
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	taskId, _ := strconv.Atoi(c.Param("taskId"))

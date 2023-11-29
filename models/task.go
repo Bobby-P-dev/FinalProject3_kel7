@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/go-playground/validator/v10"
@@ -18,30 +17,10 @@ type Task struct {
 	User        UsersRespon
 }
 
-func (task *Task) BeforeCreate(tx *gorm.DB) error {
+func (task *Task) BeforeUpdate(tx *gorm.DB) (err error) {
 
 	if err := validator.New().Struct(task); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func (task *Task) BeforeUpdate(tx *gorm.DB) error {
-
-	if err := validator.New().Struct(task); err != nil {
-		return err
-	}
-
-	if err := ValidateTaskStatus(task.Status); err != nil {
-		return err
-	}
-	return nil
-}
-
-func ValidateTaskStatus(status bool) error {
-	if status != true && status != false {
-		return fmt.Errorf("Status must be true or false")
 	}
 	return nil
 }
