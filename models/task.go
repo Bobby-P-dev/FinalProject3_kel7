@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"time"
 
 	"gorm.io/gorm"
@@ -14,6 +15,26 @@ type Task struct {
 	UserID      uint   `gorm:"not null" json:"user_id"`
 	CategoryID  uint   `gorm:"not null" json:"category_id"`
 	User        UsersRespon
+}
+
+func (t *Task) BeforeCreate(tx *gorm.DB) (err error) {
+
+	t.Status = false
+	return
+}
+
+func (t *Task) BeforeUpdate(tx *gorm.DB) (err error) {
+	if err := ValidTask(t.Status); err != nil {
+		return err
+	}
+	return nil
+}
+
+func ValidTask(Status bool) (err error) {
+	if Status != true && Status != false {
+		return fmt.Errorf("Status must be true or false")
+	}
+	return nil
 }
 
 type TaskRespon struct {

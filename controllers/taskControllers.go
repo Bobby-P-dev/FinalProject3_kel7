@@ -29,6 +29,14 @@ func CreateTask(c *gin.Context) {
 		return
 	}
 
+	Category := models.Category{}
+
+	if err := db.First(&Category, Task.CategoryID).Error; err != nil {
+		err := error_utils.NewBadRequest("Category not found")
+		c.AbortWithStatusJSON(err.Status(), err)
+		return
+	}
+
 	Task.UserID = userID
 
 	err := db.Create(&Task).Error
