@@ -48,13 +48,13 @@ func CreateTask(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"id":          Task.ID,
-		"title":       Task.Title,
-		"status":      Task.Status,
-		"description": Task.Description,
-		"user_id":     Task.UserID,
-		"category_id": Task.CategoryID,
-		"created_at":  Task.CreatedAt,
+		"id"           : Task.ID,
+		"title"        : Task.Title,
+		"status"       : Task.Status,
+		"description"  : Task.Description,
+		"user_id"      : Task.UserID,
+		"category_id"  : Task.CategoryID,
+		"created_at"   : Task.CreatedAt,
 	})
 }
 
@@ -116,13 +116,13 @@ func PutTask(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":          Task.ID,
-		"title":       Task.Title,
-		"description": Task.Description,
-		"status":      Task.Status,
-		"user_id":     Task.UserID,
-		"category_id": Task.CategoryID,
-		"update_at":   Task.UpdatedAt,
+		"id"           : Task.ID,
+		"title"        : Task.Title,
+		"status"       : Task.Status,
+		"description"  : Task.Description,
+		"user_id"      : Task.UserID,
+		"category_id"  : Task.CategoryID,
+		"created_at"   : Task.CreatedAt,
 	})
 }
 
@@ -164,13 +164,13 @@ func PatchStatusTask(c *gin.Context) {
 	db.Model(&Task).Update("status", updateData.Status)
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":          Task.ID,
-		"title":       Task.Title,
-		"description": Task.Description,
-		"status":      Task.Status,
-		"user_id":     Task.UserID,
-		"category_id": Task.CategoryID,
-		"update_at":   Task.UpdatedAt,
+		"id"           : Task.ID,
+		"title"        : Task.Title,
+		"status"       : Task.Status,
+		"description"  : Task.Description,
+		"user_id"      : Task.UserID,
+		"category_id"  : Task.CategoryID,
+		"created_at"   : Task.CreatedAt,
 	})
 }
 
@@ -211,13 +211,13 @@ func PatchCategoryTask(c *gin.Context) {
 	db.Model(&Task).Update("category_id", updateCategory.CategoryID)
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":          Task.ID,
-		"title":       Task.Title,
-		"description": Task.Description,
-		"status":      Task.Status,
-		"user_id":     Task.UserID,
-		"category_id": Task.CategoryID,
-		"update_at":   Task.UpdatedAt,
+		"id"           : Task.ID,
+		"title"        : Task.Title,
+		"status"       : Task.Status,
+		"description"  : Task.Description,
+		"user_id"      : Task.UserID,
+		"category_id"  : Task.CategoryID,
+		"created_at"   : Task.CreatedAt,
 	})
 }
 
