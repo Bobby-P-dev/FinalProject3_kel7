@@ -35,9 +35,9 @@ func CreateCategories(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusCreated, gin.H{
-		"id":         Category.ID,
-		"type":       Category.Type,
-		"created_at": Category.CreatedAt,
+		"id"         :         Category.ID,
+		"type"       :       Category.Type,
+		"created_at" : Category.CreatedAt,
 	})
 }
 
@@ -98,9 +98,9 @@ func PatchCategories(c *gin.Context) {
 	db.Model(&Category).Update("type", updateData.Type)
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":        Category.ID,
-		"type":      Category.Type,
-		"update_at": Category.UpdatedAt,
+		"id"        :        Category.ID,
+		"type"      :      Category.Type,
+		"update_at" : Category.UpdatedAt,
 	})
 }
 
